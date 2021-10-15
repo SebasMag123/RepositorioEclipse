@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 
 public class quizz extends JFrame {
 	int PreguntaActual=1;
+	int Resultado=0;
+	int Total=0;
 	JLabel lblPregunta;
 	JRadioButton radOpcion1;
 	JRadioButton radOpcion2;
@@ -92,7 +94,6 @@ public class quizz extends JFrame {
 		 	}
 		 	
 		 });
-			btnAnterior.setEnabled(false);
 		btnAnterior.setBounds(10, 229, 89, 23);
 		contentPane.add(btnAnterior);
 		 btnSiguiente = new JButton("Siguiente");
@@ -113,19 +114,57 @@ public class quizz extends JFrame {
 					btnAnterior.setEnabled(true);
 					btnSiguiente.setEnabled(true);
 				}
-				
-		 	}
+				if(PreguntaActual==1)
+				{
+					if(radOpcion2.isSelected()==true)
+					{
+							Resultado++;
+					}
+				}
+				if(PreguntaActual==2)
+				{
+					if(radOpcion2.isSelected()==true)
+					{
+							Resultado++;
+					}
+				}
+				if(PreguntaActual==3)
+				{
+					if(radOpcion3.isSelected()==true)
+					{
+							Resultado++;
+					}
+				}
+				if(PreguntaActual==4)
+				{
+					if(radOpcion1.isSelected()==true)
+					{
+							Resultado++;
+					}
+				}
+				if(PreguntaActual==5)
+				{
+					if(radOpcion2.isSelected()==true)
+					{
+							Resultado++;
+					}
+				}
+				}
+				Total+=Resultado;	
 		 	}
 		 });
 		btnSiguiente.setBounds(109, 229, 89, 23);
 		contentPane.add(btnSiguiente);
 		btnEvaluar = new JButton("Evaluar");
-		btnEvaluar.addMouseListener(new MouseAdapter() {
+		btnEvaluar.addMouseListener(new MouseAdapter() 
+				{
+				
+			
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				DesplegarPreguntasYRespuestas();
 				
-				JOptionPane.showMessageDialog(null,Revisar());
+				JOptionPane.showMessageDialog(null,"Su calificacion es de:"+Total*20);
 			}
 		});
 		btnEvaluar.setBounds(208, 229, 89, 23);
@@ -142,7 +181,7 @@ public class quizz extends JFrame {
 		contentPane.add(btnSalir);
 		
 		lblPregunta = new JLabel("New label");
-		lblPregunta.setBounds(37, 59, 354, 14);
+		lblPregunta.setBounds(10, 59, 416, 14);
 		contentPane.add(lblPregunta);
 		radGrupo = new ButtonGroup();
 		
@@ -190,48 +229,8 @@ public class quizz extends JFrame {
 			radOpcion3.setText("La guerra de Troya");
 		}
 		}
-	boolean RevisarPreg1() {
-		if(PreguntaActual==1)
-			return(radOpcion2.isSelected());
-		return false;
-	}
-	boolean RevisarPreg2() {
-		if(PreguntaActual==2)
-			return(radOpcion2.isSelected());
-		return false;
-	}
-	boolean RevisarPreg3() {
-		if(PreguntaActual==3)
-				return(radOpcion3.isSelected());
-		return false;
-	}
-	boolean RevisarPreg4() {
-		if(PreguntaActual==4)
-				return(radOpcion1.isSelected());
-		return false;
-	}
-	boolean RevisarPreg5() {
-		if(PreguntaActual==5)
-			return(radOpcion2.isSelected());
-		return false;
-	}
-	int Revisar()
-	{
-		DesplegarPreguntasYRespuestas();
-		int Resultado=0;
-		if(RevisarPreg1()==true)
-			Resultado++;
-		if(RevisarPreg2()==true)
-			Resultado++;
-		if(RevisarPreg3()==true)
-			Resultado++;
-		if(RevisarPreg4()==true)
-			Resultado++;
-		if(RevisarPreg5()==true)
-			Resultado++;
-		return Resultado;
-	}
-	}
+		}
+
 	
 	
 
