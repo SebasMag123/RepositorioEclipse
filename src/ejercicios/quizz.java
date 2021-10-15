@@ -94,6 +94,7 @@ public class quizz extends JFrame {
 		 	}
 		 	
 		 });
+		 btnAnterior.setEnabled(false);
 		btnAnterior.setBounds(10, 229, 89, 23);
 		contentPane.add(btnAnterior);
 		 btnSiguiente = new JButton("Siguiente");
@@ -153,17 +154,16 @@ public class quizz extends JFrame {
 				Total+=Resultado;	
 		 	}
 		 });
+
 		btnSiguiente.setBounds(109, 229, 89, 23);
 		contentPane.add(btnSiguiente);
 		btnEvaluar = new JButton("Evaluar");
 		btnEvaluar.addMouseListener(new MouseAdapter() 
 				{
-				
-			
+					
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DesplegarPreguntasYRespuestas();
-				
+				DesplegarPreguntasYRespuestas();				
 				JOptionPane.showMessageDialog(null,"Su calificacion es de:"+Total*20);
 			}
 		});
